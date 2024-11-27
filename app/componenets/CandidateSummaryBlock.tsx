@@ -1,4 +1,4 @@
-import { Box, Typography, Chip, Stack } from '@mui/material';
+import { Box, Typography, Chip, Stack, Container } from '@mui/material';
 import { CandidateSummary } from '../types/candidate';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
@@ -10,7 +10,7 @@ interface Props {
 
 const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
   return (
-    <Box sx={{ padding: 2,  }}>
+    <Container sx={{ padding: 2, maxWidth: "960px"  }}>
         <Stack direction={{ xs: 'column', sm: 'row' }}
         sx={{
             justifyContent: "space-between",
@@ -144,7 +144,7 @@ const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
 
          </Grid>
 
-    </Box>
+    </Container>
   );
 };
 
