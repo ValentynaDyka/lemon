@@ -10,7 +10,7 @@ interface Props {
 
 const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
   return (
-    <Box sx={{ padding: 2, maxWidth: "960px"  }}>
+    <Box sx={{ padding: {xs: 2 , md: 12 }, maxWidth: "960px"  }}>
         <Stack direction={{ xs: 'column', sm: 'row' }}
         sx={{
             justifyContent: "space-between",
@@ -108,7 +108,7 @@ const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
 
 
       <Grid container spacing={2} >
-            <Grid size={4}>
+            <Grid size={{xs:12, md:4}}>
             <Typography  variant="h3" fontWeight={600} fontSize={'22px'}  sx={{ marginY: 2 }}>
             Availability
                 </Typography>
@@ -119,7 +119,7 @@ const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
         {data.availability}, {data.involvement}
       </Typography>
             </Grid>
-            <Grid size={4}>
+            <Grid size={{xs:12, md:4}}>
             <Typography  variant="h3" fontWeight={600} fontSize={'22px'}  sx={{ marginY: 2 }}>
             Ready to start
                 </Typography>
@@ -130,7 +130,7 @@ const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
         {data.readyToStart}
       </Typography>
             </Grid>
-            <Grid size={4}>
+            <Grid size={{xs:12, md:4}}>
             <Typography  variant="h3" fontWeight={600} fontSize={'22px'}  sx={{ marginY: 2 }}>
             Direct hire
                 </Typography>
