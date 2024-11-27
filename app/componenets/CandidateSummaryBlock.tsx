@@ -10,7 +10,7 @@ interface Props {
 
 const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
   return (
-    <Container sx={{ padding: 2, maxWidth: "960px"  }}>
+    <Box sx={{ padding: 2, maxWidth: "960px"  }}>
         <Stack direction={{ xs: 'column', sm: 'row' }}
         sx={{
             justifyContent: "space-between",
@@ -144,7 +144,7 @@ const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
 
          </Grid>
 
-    </Container>
+    </Box>
   );
 };
 
