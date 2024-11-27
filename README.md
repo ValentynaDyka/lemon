@@ -33,7 +33,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
 
 
 **Документація проєкту для інтеграції зовнішнього API у React додаток**
@@ -79,6 +79,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   });
   ```
   **Ключові моменти:**
+  - Запустити сервер `node server.js`
   - Сервер працює на порті `5000`.
   - Створено маршрут `/api/candidate-summary`, який виконує запит до зовнішнього API і повертає відповідь клієнту.
 
@@ -111,51 +112,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Компонент **CandidateSummaryBlock** використовувався для відображення даних про кандидата після їх отримання.
 
 - **Файл: CandidateSummaryBlock.tsx**
-  ```tsx
-  import { Box, Typography, Chip } from '@mui/material';
-  import { CandidateSummary } from '../types/candidate';
 
-  interface Props {
-    data: CandidateSummary;
-  }
-
-  const CandidateSummaryBlock: React.FC<Props> = ({ data }) => {
-    return (
-      <Box sx={{ padding: 2, border: '1px solid #ccc', borderRadius: '8px' }}>
-        <Typography variant="h3">Summary</Typography>
-        <Typography variant="subtitle1">Relevant Skills are highlighted</Typography>
-        <Typography variant="body1" sx={{ marginTop: 2 }}>
-          {data.summary}
-        </Typography>
-
-        <Typography variant="h6" sx={{ marginTop: 2 }}>Main Skills</Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {data.mainSkills.map((skill, index) => (
-            <Chip key={index} label={`${skill.name} (${skill.years || 'N/A'})`} color={skill.relevant ? 'primary' : 'default'} />
-          ))}
-        </Box>
-
-        <Typography variant="h6" sx={{ marginTop: 2 }}>Additional Skills</Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          {data.additionalSkills.map((skill, index) => (
-            <Chip key={index} label={skill.name} color={skill.relevant ? 'primary' : 'default'} />
-          ))}
-        </Box>
-
-        <Typography variant="h6" sx={{ marginTop: 2 }}>Achievements</Typography>
-        <Box>
-          {data.achievements.map((achievement, index) => (
-            <Typography key={index} variant="body2">
-              - {achievement}
-            </Typography>
-          ))}
-        </Box>
-      </Box>
-    );
-  };
-
-  export default CandidateSummaryBlock;
-  ```
 
 #### 4. Використання React Query для Управління Даними
 
@@ -177,59 +134,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Компонент **Home** був використаний для підключення хуку **useCandidateSummary** і відображення компоненту **CandidateSummaryBlock**.
 
 - **Файл: Home.tsx**
-  ```tsx
-  'use client';
 
-  import React from 'react';
-  import { useCandidateSummary } from './hooks/useCandidateSummary';
-  import styles from './page.module.css';
-  import CandidateSummaryBlock from './components/CandidateSummaryBlock';
-  import { CircularProgress, Box, Typography } from '@mui/material';
-
-  export default function Home() {
-    const { data, isLoading, error } = useCandidateSummary();
-
-    if (isLoading) {
-      return (
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-          }}
-        >
-          <CircularProgress />
-        </Box>
-      );
-    }
-
-    if (error) {
-      return (
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-          }}
-        >
-          <Typography variant="h6" color="error">
-            Error Loading Candidate Data
-          </Typography>
-        </Box>
-      );
-    }
-
-    return (
-      <div className={styles.page}>
-        <main className={styles.main}>
-          {data && <CandidateSummaryBlock data={data} />}
-        </main>
-      </div>
-    );
-  }
-  ```
 
 ### Підсумок
 1. **Створено проксі-сервер** на **Express.js**, щоб обійти обмеження **CORS** і виконувати запити до стороннього API.
