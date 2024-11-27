@@ -79,6 +79,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   });
   ```
   **Ключові моменти:**
+  - Запустити сервер `node server.js`
   - Сервер працює на порті `5000`.
   - Створено маршрут `/api/candidate-summary`, який виконує запит до зовнішнього API і повертає відповідь клієнту.
 
